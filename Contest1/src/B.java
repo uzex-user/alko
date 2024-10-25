@@ -23,7 +23,7 @@ public class B {
         return (long) ((last * 123 + lastLast * 45) % (Math.pow(10, 7) + 4321));
     }
 
-    public static long[][] Part(long[] array, int x) {
+    public static long[][] part(long[] array, int x) {
         long[] smaller = Arrays.stream(array).filter(num -> num < x).toArray();
         long[] equal = Arrays.stream(array).filter(num -> num == x).toArray();
         long[] greater = Arrays.stream(array).filter(num -> num > x).toArray();
@@ -35,7 +35,7 @@ public class B {
             return array[0];
         }
         int x = (int) (Math.random() * (array.length));
-        long[][] currValues = Part(array, (int) array[x]);
+        long[][] currValues = part(array, (int) array[x]);
         long[] l = currValues[0];
         long[] m = currValues[1];
         long[] r = currValues[2];

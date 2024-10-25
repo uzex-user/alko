@@ -15,7 +15,7 @@ public class A {
             arr[i][1] = scanner.nextLong();
         }
 
-        arr = MergeSort(arr);
+        arr = mergeSort(arr);
 
         long start = arr[0][0];
         long end = arr[0][1];
@@ -38,14 +38,11 @@ public class A {
 
         System.out.println(k);
         for (int i = 0; i < k; i++) {
-            System.out.print(arrayOut[i][0]);
-            System.out.print(" ");
-            System.out.print(arrayOut[i][1]);
-            System.out.println();
+            System.out.println(arrayOut[i][0] + " " + arrayOut[i][1]);
         }
     }
 
-    public static long[][] Merge(long[][] A, long[][] B) {
+    public static long[][] merge(long[][] A, long[][] B) {
         int i = 0;
         int j = 0;
         int n = A.length;
@@ -65,7 +62,7 @@ public class A {
         return C;
     }
 
-    public static long[][] MergeSort(long[][] array) {
+    public static long[][] mergeSort(long[][] array) {
         if (array.length <= 1) {
             return array;
         }
@@ -74,9 +71,9 @@ public class A {
         long[][] left = Arrays.copyOfRange(array, 0, mid);
         long[][] right = Arrays.copyOfRange(array, mid, array.length);
 
-        left = MergeSort(left);
-        right = MergeSort(right);
+        left = mergeSort(left);
+        right = mergeSort(right);
 
-        return Merge(left, right);
+        return merge(left, right);
     }
 }

@@ -6,7 +6,7 @@ public class C {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws Exception {
-        int size = readInt();
+        int size = Integer.parseInt(reader.readLine());
         byte[][] matrix = new byte[size][8];
 
         fillMatrix(matrix, size);
@@ -19,7 +19,7 @@ public class C {
     private static void fillMatrix(byte[][] matrix, int size) throws Exception {
         int index = 0;
         while (index < size) {
-            byte[] byteRow = new BigInteger(readString()).toByteArray();
+            byte[] byteRow = new BigInteger(reader.readLine()).toByteArray();
             System.arraycopy(
                     byteRow,
                     Math.max(byteRow.length - 8, 0),
@@ -72,13 +72,5 @@ public class C {
             System.out.print(new BigInteger(1, row) + " ");
         }
         System.out.println();
-    }
-
-    private static int readInt() throws Exception {
-        return Integer.parseInt(readString());
-    }
-
-    private static String readString() throws Exception {
-        return reader.readLine().trim();
     }
 }
