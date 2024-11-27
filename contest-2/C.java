@@ -137,7 +137,7 @@ class MinHeap {
                     siftDown(i);
                     siftUp(i);
                 }
-                break;
+                return;
             }
         }
     }

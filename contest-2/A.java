@@ -72,7 +72,7 @@ class BinaryHeap {
 
     private void siftUp(long i) {
         while (i > 1 && heap[(int) i][0] < heap[(int) i / 2][0]) {
-            swap(i, i / 2);
+            swap((int) i, (int) i / 2);
             i = i / 2;
         }
     }
@@ -84,19 +84,19 @@ class BinaryHeap {
                 j++;
             }
             if (heap[(int) i][0] > heap[(int) j][0]) {
-                swap(i, j);
+                swap((int) i, (int) j);
                 i = j;
             } else {
-                break;
+                return;
             }
         }
     }
 
-    private void swap(long i, long j) {
-        long[] temp = heap[(int) i];
-        heap[(int) i] = heap[(int) j];
-        heap[(int) j] = temp;
-        indices[(int) heap[(int) i][1]] = i;
-        indices[(int) heap[(int) j][1]] = j;
+    private void swap(int i, int j) {
+        long[] temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+        indices[(int) heap[i][1]] = i;
+        indices[(int) heap[j][1]] = j;
     }
 }

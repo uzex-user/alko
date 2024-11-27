@@ -2,11 +2,39 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+public class J {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(reader.readLine());
+        QueueWithMin queue = new QueueWithMin(1000000);
+
+        for (int i = 0; i < n; i++) {
+            String[] request = reader.readLine().split(" ");
+            String command = request[0];
+
+            if (command.equals("enqueue")) {
+                queue.enqueue(Integer.parseInt(request[1]));
+            } else if (command.equals("dequeue")) {
+                queue.dequeue();
+            } else if (command.equals("front")) {
+                queue.front();
+            } else if (command.equals("size")) {
+                queue.size();
+            } else if (command.equals("clear")) {
+                queue.clear();
+            } else if (command.equals("min")) {
+                queue.min();
+            }
+        }
+    }
+}
+
 class QueueWithMin {
     private long[] queue;
     private int front;
     private int rear;
     private int size;
+
     private long min;
 
     public QueueWithMin(int capacity) {
@@ -72,7 +100,6 @@ class QueueWithMin {
 
         System.out.println("ok");
     }
-
     public void min() {
         if (size == 0) {
             System.out.println("error");
@@ -80,32 +107,5 @@ class QueueWithMin {
         }
 
         System.out.println(min);
-    }
-}
-
-public class J {
-    public static void main(String[] args) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(reader.readLine());
-        QueueWithMin queue = new QueueWithMin(1000000);
-
-        for (int i = 0; i < n; i++) {
-            String[] request = reader.readLine().split(" ");
-            String command = request[0];
-
-            if (command.equals("enqueue")) {
-                queue.enqueue(Integer.parseInt(request[1]));
-            } else if (command.equals("dequeue")) {
-                queue.dequeue();
-            } else if (command.equals("front")) {
-                queue.front();
-            } else if (command.equals("size")) {
-                queue.size();
-            } else if (command.equals("clear")) {
-                queue.clear();
-            } else if (command.equals("min")) {
-                queue.min();
-            }
-        }
     }
 }
