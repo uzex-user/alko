@@ -3,9 +3,12 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 
 public class C {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+    public static final int EIGHT = 8;
+    public static final int INT = 256;
 
     public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int size = Integer.parseInt(reader.readLine());
         byte[][] matrix = new byte[size][8];
 
@@ -17,15 +20,16 @@ public class C {
     }
 
     private static void fillMatrix(byte[][] matrix, int size) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int index = 0;
         while (index < size) {
             byte[] byteRow = new BigInteger(reader.readLine()).toByteArray();
             System.arraycopy(
                     byteRow,
-                    Math.max(byteRow.length - 8, 0),
+                    Math.max(byteRow.length - EIGHT, 0),
                     matrix[index],
-                    8 - Math.min(byteRow.length, 8),
-                    Math.min(byteRow.length, 8));
+                    EIGHT - Math.min(byteRow.length, EIGHT),
+                    Math.min(byteRow.length, EIGHT));
             index++;
         }
     }
@@ -37,18 +41,18 @@ public class C {
     }
 
     private static void countingSort(byte[][] matrix, int pos) {
-        int[] counter = new int[256];
+        int[] counter = new int[INT];
 
         for (byte[] row : matrix) {
             int value = row[pos];
             if (value >= 0) {
                 counter[value]++;
             } else {
-                counter[256 + value]++;
+                counter[INT + value]++;
             }
         }
 
-        for (int i = 1; i < 256; i++) {
+        for (int i = 1; i < INT; i++) {
             counter[i] += counter[i - 1];
         }
 
@@ -60,7 +64,7 @@ public class C {
             if (byteValue >= 0) {
                 sortedMatrix[--counter[byteValue]] = currentRow;
             } else {
-                sortedMatrix[--counter[256 + byteValue]] = currentRow;
+                sortedMatrix[--counter[INT + byteValue]] = currentRow;
             }
         }
 

@@ -42,19 +42,19 @@ public class A {
         }
     }
 
-    public static long[][] merge(long[][] A, long[][] B) {
+    public static long[][] merge(long[][] first, long[][] second) {
         int i = 0;
         int j = 0;
-        int n = A.length;
-        int m = B.length;
+        int n = first.length;
+        int m = second.length;
         long[][] C = new long[n + m][2];
 
         while (i < n || j < m) {
-            if ((i != n) && (j == m || (A[i][0] <= B[j][0]))) {
-                C[i + j] = A[i];
+            if ((i != n) && (j == m || (first[i][0] <= second[j][0]))) {
+                C[i + j] = first[i];
                 i++;
             } else {
-                C[i + j] = B[j];
+                C[i + j] = second[j];
                 j++;
             }
         }

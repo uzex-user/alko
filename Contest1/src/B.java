@@ -16,7 +16,7 @@ public class B {
             array[i] = element(array[i - 1], array[i - 2]);
         }
 
-        System.out.println(QuickSelect(array, (int) k));
+        System.out.println(quickSelect(array, (int) k));
     }
 
     public static long element(long last, long lastLast) {
@@ -30,7 +30,7 @@ public class B {
         return new long[][] {smaller, equal, greater};
     }
 
-    public static long QuickSelect(long[] array, int k) {
+    public static long quickSelect(long[] array, int k) {
         if (array.length == 1) {
             return array[0];
         }
@@ -41,11 +41,11 @@ public class B {
         long[] r = currValues[2];
 
         if (k < l.length) {
-            return QuickSelect(l, k);
+            return quickSelect(l, k);
         }
         if (k < l.length + m.length) {
             return array[x];
         }
-        return QuickSelect(r, (int) (k - l.length - m.length));
+        return quickSelect(r, (int) (k - l.length - m.length));
     }
 }
