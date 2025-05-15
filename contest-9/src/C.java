@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class C {
     static int n;
     static int m;
     static List<Integer>[] adj;
