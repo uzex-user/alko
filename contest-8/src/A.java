@@ -7,19 +7,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class A {
-  static class Edge {
-    int to;
-    int weight;
-
-    public Edge(int to, int weight) {
-      this.to = to;
-      this.weight = weight;
-    }
-  }
-
-  static List<Edge>[] graph;
-  static long[] distance;
-
   public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     int t = Integer.parseInt(reader.readLine());
@@ -57,9 +44,23 @@ public class A {
     }
   }
 
+  private static final long LONG = 2009000999L;
+  static class Edge {
+    int to;
+    int weight;
+
+    public Edge(int to, int weight) {
+      this.to = to;
+      this.weight = weight;
+    }
+  }
+
+  static List<Edge>[] graph;
+  static long[] distance;
+
   static void solution(int n, int start) {
     distance = new long[n];
-    Arrays.fill(distance, 2009000999L);
+    Arrays.fill(distance, LONG);
     distance[start] = 0;
 
     PriorityQueue<long[]> heap = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
