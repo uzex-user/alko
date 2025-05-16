@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 public class A {
+  private static final long LONG = 2009000999L;
   public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     int t = Integer.parseInt(reader.readLine());
@@ -44,7 +45,6 @@ public class A {
     }
   }
 
-  private static final long LONG = 2009000999L;
   static class Edge {
     int to;
     int weight;

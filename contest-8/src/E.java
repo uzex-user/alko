@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class E {
+private static final int INT = 100000;
+
 public static void main(String[] args) throws IOException {
     BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
     int n = Integer.parseInt(reader.readLine());
@@ -17,7 +19,7 @@ public static void main(String[] args) throws IOException {
       String[] parts = reader.readLine().split(" ");
       for (int j = 0; j < n; j++) {
         int c = Integer.parseInt(parts[j]);
-        if (c != 100000) {
+        if (c != INT) {
           edges.add(new Edge(i, j, c));
         }
       }
@@ -26,18 +28,6 @@ public static void main(String[] args) throws IOException {
     if (solution(n)) {
     } else {
       System.out.println("NO");
-    }
-  }
-
-  static class Edge {
-    int from;
-    int to;
-    int weight;
-
-    public Edge(int from, int to, int weight) {
-      this.from = from;
-      this.to = to;
-      this.weight = weight;
     }
   }
 
@@ -89,4 +79,16 @@ public static void main(String[] args) throws IOException {
       return true;
     }
   }
+}
+
+class Edge {
+    int from;
+    int to;
+    int weight;
+
+    public Edge(int from, int to, int weight) {
+      this.from = from;
+      this.to = to;
+      this.weight = weight;
+    }
 }
