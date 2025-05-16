@@ -6,19 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class B {
-    static int n;
-    static int m;
-    static int a;
-    static int b;
-    static char[][] board;
-    static int[] dx = {0, 1, 0, -1};
-    static int[] dy = {1, 0, -1, 0};
-    static List<Integer>[] graph;
-    static int[] mt;
-    static boolean[] used;
-    static int[][] cellId;
-    static int cellCount;
-
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String[] input = reader.readLine().split(" ");
@@ -93,6 +80,19 @@ public class B {
         int squareCost = remaining * b;
         System.out.println(dominoCost + squareCost);
     }
+
+    static int n;
+    static int m;
+    static int a;
+    static int b;
+    static char[][] board;
+    static int[] dx = {0, 1, 0, -1};
+    static int[] dy = {1, 0, -1, 0};
+    static List<Integer>[] graph;
+    static int[] mt;
+    static boolean[] used;
+    static int[][] cellId;
+    static int cellCount;
 
     static boolean tryKuhn(int v) {
         if (used[v]) {

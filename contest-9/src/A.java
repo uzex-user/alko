@@ -51,7 +51,7 @@ public class A {
 
         for (int i = 0; i < rightShare; i++) {
             if (mt[i] != -1) {
-                System.out.printf("%d %d\n", mt[i] + 1, i + 1);
+                System.out.println((mt[i] + 1) + " " + (i + 1));
             }
         }
     }
