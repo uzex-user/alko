@@ -14,7 +14,7 @@ public class D {
     String[] input = reader.readLine().split(" ");
     int n = Integer.parseInt(input[0]);
     int m = Integer.parseInt(input[1]);
-    color = new String[n + 1];
+    color = new int[n + 1];
     graph = new ArrayList[n + 1];
     reversedGraph = new ArrayList[n + 1];
     result = new int[n + 1];
@@ -22,7 +22,7 @@ public class D {
     for (int i = 0; i <= n; i++) {
       graph[i] = new ArrayList<>();
       reversedGraph[i] = new ArrayList<>();
-      color[i] = "WHITE";
+      color[i] = 0;
     }
 
     for (int i = 0; i < m; i++) {
@@ -34,21 +34,21 @@ public class D {
     }
 
     for (int i = 1; i <= n; i++) {
-      if (color[i].equals("WHITE")) {
+      if (color[i] == 0) {
         dfs(i);
       }
     }
 
     Collections.reverse(toutOrder);
 
-    color = new String[n + 1];
+    color = new int[n + 1];
     for (int i = 0; i <= n; i++) {
-      color[i] = "WHITE";
+      color[i] = 0;
     }
 
     List<List<Integer>> sccList = new ArrayList<>();
     for (int node : toutOrder) {
-      if (color[node].equals("WHITE")) {
+      if (color[node] == 0) {
         List<Integer> scc = new ArrayList<>();
         dfsReversed(node, scc);
         sccList.add(scc);
@@ -71,7 +71,7 @@ public class D {
 
   static List<Integer>[] graph;
   static List<Integer>[] reversedGraph;
-  static String[] color;
+  static int[] color;
   static List<Integer> toutOrder = new ArrayList<>();
   static int[] result;
 
@@ -82,17 +82,17 @@ public class D {
     while (!stack.isEmpty()) {
       int node = stack.pop();
 
-      if (color[node].equals("WHITE")) {
-        color[node] = "GRAY";
+      if (color[node] == 0) {
+        color[node] = 1;
         stack.push(node);
 
         for (int neighbor : graph[node]) {
-          if (color[neighbor].equals("WHITE")) {
+          if (color[neighbor] == 0) {
             stack.push(neighbor);
           }
         }
-      } else if (color[node].equals("GRAY")) {
-        color[node] = "BLACK";
+      } else if (color[node] == 1) {
+        color[node] = 2;
         toutOrder.add(node);
       }
     }
@@ -105,17 +105,17 @@ public class D {
     while (!stack.isEmpty()) {
       int node = stack.pop();
 
-      if (color[node].equals("WHITE")) {
-        color[node] = "GRAY";
+      if (color[node] == 0) {
+        color[node] = 1;
         stack.push(node);
 
         for (int neighbor : reversedGraph[node]) {
-          if (color[neighbor].equals("WHITE")) {
+          if (color[neighbor] == 0) {
             stack.push(neighbor);
           }
         }
-      } else if (color[node].equals("GRAY")) {
-        color[node] = "BLACK";
+      } else if (color[node] == 1) {
+        color[node] = 2;
         scc.add(node);
       }
     }
