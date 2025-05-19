@@ -74,7 +74,7 @@ public class F {
         long flowValue = 0;
         int[] parent = new int[vertexCount];
 
-        while (true) {
+        while (parent[sink] != -1) {
             Arrays.fill(parent, -1);
             Queue<Integer> queue = new ArrayDeque<>();
             queue.add(0);
@@ -89,9 +89,6 @@ public class F {
                         queue.add(v);
                     }
                 }
-            }
-            if (parent[sink] == -1) {
-                break;
             }
 
             long addFlow = Long.MAX_VALUE;
